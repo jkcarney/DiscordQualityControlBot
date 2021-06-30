@@ -20,6 +20,5 @@ async def on_message(message):
 
     if message.content != '':
         await message.channel.send('SILENCE, {0}!'.format(message.author.name))
-        await client.
 
 client.run(TOKEN)
