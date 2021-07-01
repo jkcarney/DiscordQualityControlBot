@@ -36,9 +36,12 @@ def add_to_member_score(author):
         add_score(conn, str(author))
 
     c.execute("SELECT * FROM members WHERE username=?", (str(author),))
-    print('Updated member score: {}'.format(c.fetchone()))
-    c.close()
+    data = c.fetchone()
+    score = data[1]
+    print('Updated member score: {}'.format(data))
+
     conn.close()
+    return score
 
 
 def initialize_member(conn, author):
