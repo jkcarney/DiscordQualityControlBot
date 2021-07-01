@@ -2,3 +2,7 @@ src/.idea/*
 /.idea/*
 
 src/secrets.env
+src/__pycache__/role_utils.cpython-39.pyc
+src/sqlite/__pycache__/sqlite_manager.cpython-39.pyc
+src/sqlite/all.csv
+src/sqlite/members.db
