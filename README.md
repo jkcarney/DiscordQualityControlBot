@@ -25,4 +25,8 @@ In ```sqlite_manager.py```, the table populating for the roles is located in the
 
 ```(100, 'Cool-Guy'),...``` 
 
+(this way of changing the roles and thresholds is temporary and will be changed to something more intuitive later.)
+
+<br>
+
 To run the bot, navigate to the root and run ```python3 quality_control.py```. This will initialize the database for you as well.
