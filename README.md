@@ -4,7 +4,6 @@
 
 <p align="center"><img width=50% src="https://i.imgur.com/DgGIKII.png"></p>
 
-<br>
 
 ## Overview
 The QualityControlBot (or QCB) is my answer to a social experiment idea I had. That idea was, "If everyone in a Discord server could only communicate via images and videos, what would happen?"
