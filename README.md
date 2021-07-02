@@ -23,9 +23,7 @@ First in the root of the folder, you must create a file, ```secrets.env```. The 
 
 <br>
 
-In ```sqlite_manager.py```, the table populating for the roles is located in the function 
-
-```def populate_roles_table(conn)```. 
+In ```sqlite_manager.py```, the table populating for the roles is located in the function ```def populate_roles_table(conn)```
 
 Change the strings and numbers to match the role you want at the specified threshold. For example, if you wanted the role "Cool-Guy" to be achieved at 100 points, in data you would add a tuple that looks like: 
 
