@@ -21,6 +21,8 @@ First in the root of the folder, you must create a file, ```secrets.env```. The 
 
 ```WHITELIST=user_guy#1234,user_lady#5678,``` where the users are replaced with names you may wish to whitelist. Whitelisted names are not affected by the bot and will never increment their internal score. The format must have the names separated by commas (it also must end in a comma) I recommend putting administrators and the bot itself into the whitelist.
 
+<br>
+
 In ```sqlite_manager.py```, the table populating for the roles is located in the function 
 
 ```def populate_roles_table(conn)```. 
