@@ -1,27 +1,62 @@
 import sqlite3, os, discord
 
-def initialize_db():
+def initialize_dbs():
     if(not os.path.exists(r'sqlite\members.db')):
         print('Database not found. Initializing one...')
         conn = sqlite3.connect(r'sqlite\members.db')
         c = conn.cursor()
+
+        # Members table
         c.execute('''SELECT count(name) FROM sqlite_master WHERE type='table' AND name='members' ''')
         if(c.fetchone()[0] == 1):
-            print('Table exists')
+            print('Member table exists')
         else:
-            create_tables(conn)
-            print('Table created.')
+            create_member_table(conn)
+            print('Member table created.')
+
+        # Roles table
+        c.execute("SELECT count(name) FROM sqlite_master WHERE type='table' AND name= 'roles' ")
+        if(c.fetchone()[0] == 1):
+            print('Roles table exists')
+        else:
+            create_roles_table(conn)
+            print('Roles table created')
+        conn.close()
     else:
         print('Database already exists')
 
-def create_tables(conn):
+def create_member_table(conn):
     c = conn.cursor()
     c.execute('''CREATE TABLE members (
                 username text,
                 post_count integer
                 )''')
     conn.commit()
-    conn.close()
+
+def create_roles_table(conn):
+    c = conn.cursor()
+    c.execute(''' CREATE TABLE roles (
+                threshold integer,
+                role_name text
+                )''')
+    conn.commit()
+    populate_roles_table(conn)
+
+
+def populate_roles_table(conn):
+    c = conn.cursor()
+    data = [(1, 'simpleton'),
+            (5, 'normie'),
+            (20, 'edgy'),
+            (50, 'shitposter'),
+            (100, 'based'),
+            (200, 'shitpost-GOD'),
+            (500, 'based-GOD'),
+            (1000, 'GIGA-CHAD'),
+            (2000, 'ENLIGHTENED')
+            ]
+    c.executemany('INSERT INTO roles VALUES(?, ?)', data)
+    conn.commit()
 
 
 def add_to_member_score(author):
@@ -73,7 +108,7 @@ def erase_member(member):
     try:
         c.execute("DELETE FROM members WHERE username=?",(user,))
         conn.commit()
-        print('{} got banned, therefore he was deleted from the database')
+        print('{0} got banned, therefore he was deleted from the database'.format(user))
     except:
         print('An exception occured when trying to delete {} from the DB (probably they didn\'t exist)'.format(user))
 

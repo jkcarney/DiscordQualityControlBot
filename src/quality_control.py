@@ -1,7 +1,7 @@
 import os
 import discord
 import sqlite.sqlite_manager as db
-import roles.role_utils as roles
+import role_utils as roles
 from discord.utils import get
 from discord.ext import commands
 from dotenv import load_dotenv
@@ -39,6 +39,6 @@ async def on_message(message):
 async def ban_member(member: discord.Member, reason=None):
     await member.ban(reason=reason)
 
-db.initialize_db()
+db.initialize_dbs()
 
 client.run(TOKEN)
