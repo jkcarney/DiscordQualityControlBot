@@ -120,6 +120,12 @@ def erase_member(member):
 def set_member_score(member, desired_score):
     conn = sqlite3.connect(os.path.join('members.db'))
     c = conn.cursor()
+    c.execute("SELECT * FROM members WHERE username=?", (str(author),))
+
+    # add user to db if none found
+    if(c.fetchone() is None):
+        initialize_member(conn, str(author))
+        
     try:
         c.execute("UPDATE members SET post_count=? WHERE username=?", (desired_score,member))
         conn.commit()
