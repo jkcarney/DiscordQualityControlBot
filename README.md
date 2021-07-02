@@ -12,6 +12,8 @@ The QCB accomplishes this pretty simply: it sees if each message in the chat con
 
 QCB is fairly lightweight. It utilizes the discord.py library as well as Python's built in sqlite3 library for database interaction.
 
+<br> 
+
 ## Setup
 First in the root of the folder, you must create a file, ```secrets.env```. The .env file will serve for holding your discord token and a few other things. The file should contain two lines that looks like this:
 
