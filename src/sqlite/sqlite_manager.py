@@ -1,9 +1,9 @@
 import sqlite3, os, discord
 
 def initialize_dbs():
-    if(not os.path.exists(r'sqlite\members.db')):
+    if(not os.path.exists(os.path.join('sqlite','members.db'))):
         print('Database not found. Initializing one...')
-        conn = sqlite3.connect(r'sqlite\members.db')
+        conn = sqlite3.connect(os.path.join('sqlite','members.db'))
         c = conn.cursor()
 
         # Members table
@@ -60,7 +60,7 @@ def populate_roles_table(conn):
 
 
 def add_to_member_score(author):
-    conn = sqlite3.connect(r'sqlite\members.db')
+    conn = sqlite3.connect(os.path.join('sqlite','members.db'))
     c = conn.cursor()
     c.execute("SELECT * FROM members WHERE username=?", (str(author),))
 
@@ -103,7 +103,7 @@ def add_score(conn, author):
 #for use if a user is banned
 def erase_member(member):
     user = str(member)
-    conn = sqlite3.connect(r'sqlite\members.db')
+    conn = sqlite3.connect(os.path.join('sqlite','members.db'))
     c = conn.cursor()
     try:
         c.execute("DELETE FROM members WHERE username=?",(user,))
@@ -118,7 +118,7 @@ def erase_member(member):
 # These are utility functions #
 ###############################
 def set_member_score(member, desired_score):
-    conn = sqlite3.connect(r'members.db')
+    conn = sqlite3.connect(os.path.join('members.db'))
     c = conn.cursor()
     try:
         c.execute("UPDATE members SET post_count=? WHERE username=?", (desired_score,member))
@@ -130,7 +130,7 @@ def set_member_score(member, desired_score):
 
 
 def get_all_data():
-    conn = sqlite3.connect(r'members.db')
+    conn = sqlite3.connect(os.path.join('members.db'))
     c = conn.cursor()
     c.execute("SELECT * FROM members")
     data = c.fetchall()

@@ -6,7 +6,7 @@ import os, sys, sqlite3
 
 
 def check_rank(score):
-    conn = sqlite3.connect(r'sqlite\members.db')
+    conn = sqlite3.connect(os.path.join('sqlite','members.db'))
     c = conn.cursor()
     c.execute("SELECT role_name FROM roles WHERE threshold=?", (score,))
 
