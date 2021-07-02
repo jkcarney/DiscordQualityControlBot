@@ -7,3 +7,4 @@ src/sqlite/__pycache__/sqlite_manager.cpython-39.pyc
 src/sqlite/all.csv
 src/sqlite/members.db
 src/roles/__pycache__/role_utils.cpython-39.pyc
+src/__pycache__/bot_responses.cpython-39.pyc
