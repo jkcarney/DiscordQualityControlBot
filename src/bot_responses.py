@@ -12,7 +12,7 @@ async def on_message_response(message, client):
     if message.author == client.user or str(message.author) in os.getenv('WHITELIST').split(','):
         return
 
-    if message.content != '' and not 'https://tenor.com/view/' in message.content:
+    if message.content != '':
         await message.channel.send('SILENCE, {0}! BANNED.'.format(message.author.mention))
         await ban_member(message.author, 'NO TEXT. ONLY SHITPOSTS.')
         db.erase_member(message.author)
