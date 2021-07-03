@@ -24,8 +24,10 @@ async def on_message(message):
     await responses.on_message_response(message, client)
 
 
-async def ban_member(member: discord.Member, reason=None):
-    await member.ban(reason=reason)
+@client.event
+async def on_message_edit(before, after):
+    await responses.on_message_response(after, client)
+
 
 db.initialize_dbs()
 

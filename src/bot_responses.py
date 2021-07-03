@@ -23,3 +23,6 @@ async def on_message_response(message, client):
             role = get(message.guild.roles, name=role_string)
             await message.author.add_roles(role)
             await message.channel.send('CONGRATULATIONS {0} FOR ACHIEVING {1} RANK'.format(message.author.mention, role_string))
+
+async def ban_member(member: discord.Member, reason=None):
+    await member.ban(reason=reason)
